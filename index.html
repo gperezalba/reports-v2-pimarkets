@@ -102,38 +102,35 @@
             if ((month == 0) || (year == 0)) {
                 alert("Fecha errónea")
             } else {
-                if ((year == 2020) && (month < 11)) {
-                    alert("Datos disponibles desde noviembre de 2020")
-                } else {
-                    document.getElementById("wait").innerHTML = "Espere...";
-                    let selectorElement = document.getElementById("reportSelector");
-                    let reportSelector = selectorElement.options[selectorElement.selectedIndex].value;
 
-                    switch(reportSelector) {
-                        case "1":
-                            await getTransactionReport(month, year);
-                            break;
-                        case "2":
-                            await getTokenHoldersReport(); 
-                            break;
-                        case "3":
-                            await getPackableHoldersReport();
-                            break;
-                        case "4":
-                            await getCollectableHoldersReport();
-                            break;
-                        case "5":
-                            await getTokenDealsReport(month, year);
-                            break;
-                        case "6":
-                            await getPackableDealsReport(month, year);
-                            break;
-                        default:
-                            alert("Ningún tipo de reporte elegido");
-                    }
+                document.getElementById("wait").innerHTML = "Espere...";
+                let selectorElement = document.getElementById("reportSelector");
+                let reportSelector = selectorElement.options[selectorElement.selectedIndex].value;
 
-                    document.getElementById("wait").innerHTML = "Descarga completada";
+                switch(reportSelector) {
+                    case "1":
+                        await getTransactionReport(month, year);
+                        break;
+                    case "2":
+                        await getTokenHoldersReport(); 
+                        break;
+                    case "3":
+                        await getPackableHoldersReport();
+                        break;
+                    case "4":
+                        await getCollectableHoldersReport();
+                        break;
+                    case "5":
+                        await getTokenDealsReport(month, year);
+                        break;
+                    case "6":
+                        await getPackableDealsReport(month, year);
+                        break;
+                    default:
+                        alert("Ningún tipo de reporte elegido");
                 }
+
+                document.getElementById("wait").innerHTML = "Descarga completada";
             }
         }
 
