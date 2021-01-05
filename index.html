@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="https://www.pimarkets.io/favicon.ico"/>
     <title>PiMarkets® Reportes</title>
-    <script src="https://cdn.jsdelivr.net/npm/pi-markets@1.0.41/dist/pimarkets.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pi-markets@1.0.45/dist/pimarkets.min.js"></script>
     <script type="text/javascript">
         let timeLow = 0;
         let timeHigh = 32703676400;
@@ -30,7 +30,8 @@
             pimarkets.Constants.TDVD,
             pimarkets.Constants.BPV,
             pimarkets.Constants.FVIA,
-            pimarkets.Constants.CRMA
+            pimarkets.Constants.CRMA,
+            pimarkets.Constants.NOVA
         ]
 
         const tokensArray = [
@@ -58,7 +59,8 @@
             pimarkets.Constants.TDVD,
             pimarkets.Constants.BPV,
             pimarkets.Constants.FVIA,
-            pimarkets.Constants.CRMA
+            pimarkets.Constants.CRMA,
+            pimarkets.Constants.NOVA
         ];
 
         const packableDealArray = [
@@ -69,7 +71,8 @@
             pimarkets.Constants.TDVD,
             pimarkets.Constants.BPV,
             pimarkets.Constants.FVIA,
-            pimarkets.Constants.CRMA
+            pimarkets.Constants.CRMA,
+            pimarkets.Constants.NOVA
         ];
 
         const expiries = [
@@ -82,6 +85,7 @@
             pimarkets.Constants.BPV.expiry.nov21,
             pimarkets.Constants.FVIA.expiry.nov21,
             pimarkets.Constants.CRMA.expiry.nov21,
+            pimarkets.Constants.NOVA.expiry.mar21
         ];
 
         const collectablesArray = [
@@ -300,7 +304,7 @@
 
     <div class="center">
         <h1>PiMarkets®</h1>
-        <h4>- Reportes v1.0.41 -</h4>
+        <h4>- Reportes v1.0.45 -</h4>
         <br>
         <select class="mySelector" name="reportSelector" id="reportSelector">
             <option value="0">Elegir tipo...</option>
