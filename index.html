@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="https://www.pimarkets.io/favicon.ico"/>
     <title>PiMarkets® Reportes</title>
-    <script src="https://cdn.jsdelivr.net/npm/pi-markets@1.0.51/dist/pimarkets.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pi-markets@1.0.54/dist/pimarkets.min.js"></script>
     <script type="text/javascript">
         let timeLow = 0;
         let timeHigh = 32703676400;
@@ -31,7 +31,11 @@
             pimarkets.Constants.BPV,
             pimarkets.Constants.FVIA,
             pimarkets.Constants.CRMA,
-            pimarkets.Constants.NOVA
+            pimarkets.Constants.NOVA,
+            pimarkets.Constants.BRENT_LONG,
+            pimarkets.Constants.BRENT_SHORT,
+            pimarkets.Constants.SP500_LONG,
+            pimarkets.Constants.SP500_SHORT
         ]
 
         const tokensArray = [
@@ -60,7 +64,11 @@
             pimarkets.Constants.BPV,
             pimarkets.Constants.FVIA,
             pimarkets.Constants.CRMA,
-            pimarkets.Constants.NOVA
+            pimarkets.Constants.NOVA,
+            pimarkets.Constants.BRENT_LONG,
+            pimarkets.Constants.BRENT_SHORT,
+            pimarkets.Constants.SP500_LONG,
+            pimarkets.Constants.SP500_SHORT
         ];
 
         const packableDealArray = [
@@ -72,7 +80,11 @@
             pimarkets.Constants.BPV,
             pimarkets.Constants.FVIA,
             pimarkets.Constants.CRMA,
-            pimarkets.Constants.NOVA
+            pimarkets.Constants.NOVA,
+            pimarkets.Constants.BRENT_LONG,
+            pimarkets.Constants.BRENT_SHORT,
+            pimarkets.Constants.SP500_LONG,
+            pimarkets.Constants.SP500_SHORT
         ];
 
         const expiries = [
@@ -85,7 +97,11 @@
             pimarkets.Constants.BPV.expiry.nov21,
             pimarkets.Constants.FVIA.expiry.nov21,
             pimarkets.Constants.CRMA.expiry.nov21,
-            pimarkets.Constants.NOVA.expiry.mar21
+            pimarkets.Constants.NOVA.expiry.mar21,
+            pimarkets.Constants.BRENT_LONG.expiry.feb21,
+            pimarkets.Constants.BRENT_SHORT.expiry.feb21,
+            pimarkets.Constants.SP500_LONG.expiry.feb21,
+            pimarkets.Constants.SP500_SHORT.expiry.feb21
         ];
 
         const collectablesArray = [
@@ -304,7 +320,7 @@
 
     <div class="center">
         <h1>PiMarkets®</h1>
-        <h4>- Reportes v1.0.51 -</h4>
+        <h4>- Reportes v1.0.54 -</h4>
         <br>
         <select class="mySelector" name="reportSelector" id="reportSelector">
             <option value="0">Elegir tipo...</option>
