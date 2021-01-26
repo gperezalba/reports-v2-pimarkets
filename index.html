@@ -119,13 +119,17 @@
             let month = parseInt(monthValue);
             let year = parseInt(yearValue);
 
-            if ((month == 0) || (year == 0)) {
+            let selectorElement = document.getElementById("reportSelector");
+            let reportSelector = selectorElement.options[selectorElement.selectedIndex].value;
+
+            let nameElement = document.getElementById("nicknameInput");
+            let nickname = nameElement.value;
+
+            if (((reportSelector == 1) || (reportSelector == 5) || (reportSelector == 6) || (reportSelector == 7)) && ((month == 0) || (year == 0))) {
                 alert("Fecha errónea")
             } else {
 
                 document.getElementById("wait").innerHTML = "Espere...";
-                let selectorElement = document.getElementById("reportSelector");
-                let reportSelector = selectorElement.options[selectorElement.selectedIndex].value;
 
                 switch(reportSelector) {
                     case "1":
@@ -145,6 +149,9 @@
                         break;
                     case "6":
                         await getPackableDealsReport(month, year);
+                        break;
+                    case "7":
+                        await getUserDealsReport(nickname, month, year);
                         break;
                     default:
                         alert("Ningún tipo de reporte elegido");
@@ -207,6 +214,51 @@
                 year,
                 packableDealArray
             )
+        }
+
+        async function getUserDealsReport(nickname, month, year) {
+            let reportsService = new pimarkets.Report('mainnet');
+            try {
+                await reportsService.getUserDealsReport(
+                    nickname,
+                    month,
+                    year
+                )
+            } catch(error) {
+                console.error(error);
+                alert("ERROR. Usuario inexistente");
+            }
+        }
+
+        function hideDateSelector() {
+            let monthSelector = document.getElementById("monthSelector");
+            let yearSelector = document.getElementById("yearSelector");
+            let selectorElement = document.getElementById("reportSelector");
+            let reportSelector = selectorElement.options[selectorElement.selectedIndex].value;
+
+            if ((reportSelector == 1) || (reportSelector == 5) || (reportSelector == 6) || (reportSelector == 7)) {
+                monthSelector.style.visibility = 'visible';
+                yearSelector.style.visibility = 'visible';
+            } else if ((reportSelector == 2) || (reportSelector == 3) || (reportSelector == 4)) {
+                monthSelector.style.visibility = 'hidden';
+                yearSelector.style.visibility = 'hidden';
+            }
+
+            if (reportSelector == 7) {
+                showNicknameInput();
+            } else {
+                hideNicknameInput();
+            }
+        }
+
+        function showNicknameInput() {
+            let selectorElement = document.getElementById("nicknameInput");
+            selectorElement.style.visibility = 'visible';
+        }
+
+        function hideNicknameInput() {
+            let selectorElement = document.getElementById("nicknameInput");
+            selectorElement.style.visibility = 'hidden';
         }
 
         function getUtcTime() {
@@ -322,7 +374,7 @@
         <h1>PiMarkets®</h1>
         <h4>- Reportes v1.0.55 -</h4>
         <br>
-        <select class="mySelector" name="reportSelector" id="reportSelector">
+        <select class="mySelector" name="reportSelector" id="reportSelector"  onchange="hideDateSelector();">
             <option value="0">Elegir tipo...</option>
             <option value="1">Transacciones</option>
             <option value="2">Tenedores (Divisa)</option>
@@ -330,6 +382,7 @@
             <option value="4">Tenedores (Coleccionable)</option>
             <option value="5">Pactos (Divisa)</option>
             <option value="6">Pactos (Packable)</option>
+            <option value="7">Usuario</option>
         </select>
         <br>
         <br>
@@ -355,6 +408,9 @@
             <option value="11">Noviembre</option>
             <option value="12">Diciembre</option>
         </select>
+        <br>
+        <br>
+        <input id="nicknameInput" placeholder="Inserte nickname..."></input>
         <br>
         <br>
         <div style="color: white;" id="wait"></div>
