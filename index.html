@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="https://www.pimarkets.io/favicon.ico"/>
     <title>PiMarkets® Reportes</title>
-    <script src="https://cdn.jsdelivr.net/npm/pi-markets@1.0.55/dist/pimarkets.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pi-markets@1.0.71/dist/pimarkets.min.js"></script>
     <script type="text/javascript">
         let timeLow = 0;
         let timeHigh = 32703676400;
@@ -35,7 +35,8 @@
             pimarkets.Constants.BRENT_LONG,
             pimarkets.Constants.BRENT_SHORT,
             pimarkets.Constants.SP500_LONG,
-            pimarkets.Constants.SP500_SHORT
+            pimarkets.Constants.SP500_SHORT,
+            pimarkets.Constants.AGRO
         ]
 
         const tokensArray = [
@@ -68,7 +69,8 @@
             pimarkets.Constants.BRENT_LONG,
             pimarkets.Constants.BRENT_SHORT,
             pimarkets.Constants.SP500_LONG,
-            pimarkets.Constants.SP500_SHORT
+            pimarkets.Constants.SP500_SHORT,
+            pimarkets.Constants.AGRO
         ];
 
         const packableDealArray = [
@@ -84,7 +86,8 @@
             pimarkets.Constants.BRENT_LONG,
             pimarkets.Constants.BRENT_SHORT,
             pimarkets.Constants.SP500_LONG,
-            pimarkets.Constants.SP500_SHORT
+            pimarkets.Constants.SP500_SHORT,
+            pimarkets.Constants.AGRO
         ];
 
         const expiries = [
@@ -102,6 +105,7 @@
             pimarkets.Constants.BRENT_SHORT.expiry.feb21,
             pimarkets.Constants.SP500_LONG.expiry.feb21,
             pimarkets.Constants.SP500_SHORT.expiry.feb21
+            pimarkets.Constants.AGRO.expiry.never
         ];
 
         const collectablesArray = [
@@ -372,7 +376,7 @@
 
     <div class="center">
         <h1>PiMarkets®</h1>
-        <h4>- Reportes v1.0.55 -</h4>
+        <h4>- Reportes v1.0.71 -</h4>
         <br>
         <select class="mySelector" name="reportSelector" id="reportSelector"  onchange="hideDateSelector();">
             <option value="0">Elegir tipo...</option>
