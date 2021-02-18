@@ -55,6 +55,16 @@
             pimarkets.Constants.USDT
         ];
 
+        const tokensArrayNoFiat = [
+            pimarkets.Constants.PI,
+            pimarkets.Constants.BTC,
+            pimarkets.Constants.USC,
+            pimarkets.Constants.ETH,
+            pimarkets.Constants.PEL,
+            pimarkets.Constants.GLDX,
+            pimarkets.Constants.USDT
+        ];
+
         const packablesArray = [
             pimarkets.Constants.RST,
             pimarkets.Constants.RST,
@@ -179,7 +189,7 @@
             await reportsService.getTokenHoldersReport(
                 "balance",
                 "desc",
-                tokensArray
+                tokensArrayNoFiat
             )
         }
 
