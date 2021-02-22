@@ -4,124 +4,24 @@
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="https://www.pimarkets.io/favicon.ico"/>
     <title>PiMarkets® Reportes</title>
-    <script src="https://cdn.jsdelivr.net/npm/pi-markets@1.0.71/dist/pimarkets.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pi-markets@1.0.85/dist/pimarkets.min.js"></script>
     <script type="text/javascript">
         let timeLow = 0;
         let timeHigh = 32703676400;
 
-        const allTokens = [
-            pimarkets.Constants.PI,
-            pimarkets.Constants.BTC,
-            pimarkets.Constants.USC,
-            pimarkets.Constants.ETH,
-            pimarkets.Constants.EUR,
-            pimarkets.Constants.PEN,
-            pimarkets.Constants.ARS,
-            pimarkets.Constants.USD,
-            pimarkets.Constants.VES,
-            pimarkets.Constants.PEL,
-            pimarkets.Constants.GLDX,
-            pimarkets.Constants.CLP,
-            pimarkets.Constants.USDT,
-            pimarkets.Constants.RST,
-            pimarkets.Constants.BNC,
-            pimarkets.Constants.PGR,
-            pimarkets.Constants.ENV,
-            pimarkets.Constants.TDVD,
-            pimarkets.Constants.BPV,
-            pimarkets.Constants.FVIA,
-            pimarkets.Constants.CRMA,
-            pimarkets.Constants.NOVA,
-            pimarkets.Constants.BRENT_LONG,
-            pimarkets.Constants.BRENT_SHORT,
-            pimarkets.Constants.SP500_LONG,
-            pimarkets.Constants.SP500_SHORT,
-            pimarkets.Constants.AGRO
-        ]
+        const allTokens = pimarkets.Constants.ALL_TOKENS;
 
-        const tokensArray = [
-            pimarkets.Constants.PI,
-            pimarkets.Constants.BTC,
-            pimarkets.Constants.USC,
-            pimarkets.Constants.ETH,
-            pimarkets.Constants.EUR,
-            pimarkets.Constants.PEN,
-            pimarkets.Constants.ARS,
-            pimarkets.Constants.USD,
-            pimarkets.Constants.VES,
-            pimarkets.Constants.PEL,
-            pimarkets.Constants.GLDX,
-            pimarkets.Constants.CLP,
-            pimarkets.Constants.USDT
-        ];
+        const tokensArray = pimarkets.Constants.ALL_ERC223;
 
-        const tokensArrayNoFiat = [
-            pimarkets.Constants.PI,
-            pimarkets.Constants.BTC,
-            pimarkets.Constants.USC,
-            pimarkets.Constants.ETH,
-            pimarkets.Constants.PEL,
-            pimarkets.Constants.GLDX,
-            pimarkets.Constants.USDT
-        ];
+        const tokensArrayNoFiat = pimarkets.Constants.ALL_ERC223_NO_FIAT;
 
-        const packablesArray = [
-            pimarkets.Constants.RST,
-            pimarkets.Constants.RST,
-            pimarkets.Constants.BNC,
-            pimarkets.Constants.PGR,
-            pimarkets.Constants.ENV,
-            pimarkets.Constants.TDVD,
-            pimarkets.Constants.BPV,
-            pimarkets.Constants.FVIA,
-            pimarkets.Constants.CRMA,
-            pimarkets.Constants.NOVA,
-            pimarkets.Constants.BRENT_LONG,
-            pimarkets.Constants.BRENT_SHORT,
-            pimarkets.Constants.SP500_LONG,
-            pimarkets.Constants.SP500_SHORT,
-            pimarkets.Constants.AGRO
-        ];
+        const packablesArray = pimarkets.Constants.ALL_PACKABLES;
 
-        const packableDealArray = [
-            pimarkets.Constants.RST,
-            pimarkets.Constants.BNC,
-            pimarkets.Constants.PGR,
-            pimarkets.Constants.ENV,
-            pimarkets.Constants.TDVD,
-            pimarkets.Constants.BPV,
-            pimarkets.Constants.FVIA,
-            pimarkets.Constants.CRMA,
-            pimarkets.Constants.NOVA,
-            pimarkets.Constants.BRENT_LONG,
-            pimarkets.Constants.BRENT_SHORT,
-            pimarkets.Constants.SP500_LONG,
-            pimarkets.Constants.SP500_SHORT,
-            pimarkets.Constants.AGRO
-        ];
+        const packableDealArray = pimarkets.Constants.ALL_PACKABLES;
 
-        const expiries = [
-            pimarkets.Constants.RST.expiry.ene21,
-            pimarkets.Constants.RST.expiry.nov21,
-            pimarkets.Constants.BNC.expiry.nov21,
-            pimarkets.Constants.PGR.expiry.nov21,
-            pimarkets.Constants.ENV.expiry.nov21,
-            pimarkets.Constants.TDVD.expiry.nov21,
-            pimarkets.Constants.BPV.expiry.nov21,
-            pimarkets.Constants.FVIA.expiry.nov21,
-            pimarkets.Constants.CRMA.expiry.nov21,
-            pimarkets.Constants.NOVA.expiry.mar21,
-            pimarkets.Constants.BRENT_LONG.expiry.feb21,
-            pimarkets.Constants.BRENT_SHORT.expiry.feb21,
-            pimarkets.Constants.SP500_LONG.expiry.feb21,
-            pimarkets.Constants.SP500_SHORT.expiry.feb21,
-            pimarkets.Constants.AGRO.expiry.never
-        ];
+        const expiries = pimarkets.Constants.ALL_PACKABLE_EXP;
 
-        const collectablesArray = [
-            pimarkets.Constants.DIA,
-            pimarkets.Constants.GLDS
-        ];
+        const collectablesArray = pimarkets.Constants.ALL_COLLECTABLES;
 
         async function getExcel() {
             let monthSelector = document.getElementById("monthSelector");
@@ -180,7 +80,8 @@
             await reportsService.getTransactionReportV2(
                 month,
                 year,
-                allTokens
+                allTokens,
+                false
             )
         }
 
@@ -189,7 +90,8 @@
             await reportsService.getTokenHoldersReport(
                 "balance",
                 "desc",
-                tokensArrayNoFiat
+                tokensArrayNoFiat,
+                false
             )
         }
 
@@ -199,7 +101,8 @@
                 "balance",
                 "desc",
                 packablesArray,
-                expiries
+                expiries,
+                false
             )
         }
 
@@ -217,7 +120,8 @@
             await reportsService.getTokenDealsReportV2(
                 month,
                 year,
-                tokensArray
+                tokensArray,
+                false
             )
         }
 
@@ -226,7 +130,8 @@
             await reportsService.getPackableDealsReportV2(
                 month,
                 year,
-                packableDealArray
+                packableDealArray,
+                false
             )
         }
 
@@ -386,7 +291,7 @@
 
     <div class="center">
         <h1>PiMarkets®</h1>
-        <h4>- Reportes v1.0.71 -</h4>
+        <h4>- Reportes v1.0.85 -</h4>
         <br>
         <select class="mySelector" name="reportSelector" id="reportSelector"  onchange="hideDateSelector();">
             <option value="0">Elegir tipo...</option>
@@ -424,7 +329,7 @@
         </select>
         <br>
         <br>
-        <input id="nicknameInput" placeholder="Inserte nickname..."></input>
+        <input id="nicknameInput" placeholder="Inserte wallet..."></input>
         <br>
         <br>
         <div style="color: white;" id="wait"></div>
