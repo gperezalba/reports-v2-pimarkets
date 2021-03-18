@@ -222,6 +222,10 @@
             selectorElement.style.visibility = 'hidden';
             let selectorElement2 = document.getElementById("toDate");
             selectorElement2.style.visibility = 'hidden';
+            let selectorElement3 = document.getElementById("fromTag");
+            selectorElement3.style.visibility = 'hidden';
+            let selectorElement4 = document.getElementById("toTag");
+            selectorElement4.style.visibility = 'hidden';
         }
 
         function showDateInputs() {
@@ -229,11 +233,15 @@
             selectorElement.style.visibility = 'visible';
             let selectorElement2 = document.getElementById("toDate");
             selectorElement2.style.visibility = 'visible';
+            let selectorElement3 = document.getElementById("fromTag");
+            selectorElement3.style.visibility = 'visible';
+            let selectorElement4 = document.getElementById("toTag");
+            selectorElement4.style.visibility = 'visible';
         }
 
         function getTimeFromString(dateString) {
-            date = dateString.split("/");
-            let dateObj = new Date( date[2], date[1] - 1, date[0]);
+            date = dateString.split("-");
+            let dateObj = new Date( date[0], date[1] - 1, date[2]);
             return dateObj.getTime() / 1000;
         }
 
@@ -399,10 +407,12 @@
         <input class="redondeadonorelieve" id="nicknameInput" placeholder="Inserte wallet (0x...)"></input>
         <br>
         <br>
-        <input type="text" class="redondeadonorelieve" id="fromDate" placeholder="Desde (dd/mm/yyyy)">
+        <div style="color: white; visibility:hidden" id="fromTag">Desde</div>
+        <input type="date" class="redondeadonorelieve" id="fromDate" placeholder="Desde (dd/mm/yyyy)">
         <br>
         <br>
-        <input type="text" class="redondeadonorelieve" id="toDate" placeholder="Hasta (dd/mm/yyyy)">
+        <div style="color: white; visibility:hidden" id="toTag">Hasta</div>
+        <input type="date" class="redondeadonorelieve" id="toDate" placeholder="Hasta (dd/mm/yyyy)">
         <br>
         <br>
         <div style="color: white;" id="wait"></div>
